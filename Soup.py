@@ -64,7 +64,7 @@ class Soup :
         e=2.71828
         
         for z in range(3,11) :
-            print('The estimated probability of player '+str(name)+' winning a ' + str(5*z) +' minute game is ' +str((1/(1+e**(intercept + (5*z)*coefficient)))))
+            print('The estimated probability of player '+str(name)+' winning a ' + str(5*z) +' minute game is ' +str((1/(1+e**(-(intercept + (5*z)*coefficient))))))
         
         cm = confusion_matrix(y, model.predict(x))
         

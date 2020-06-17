@@ -37,13 +37,17 @@ class Selen:
         except:
             print('ad not loaded, good!')
         for x in range(0,5) :
-            driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-            time.sleep(3)
-            xpath1 = "(//*[@id='SummonerLayoutContent']/div[2]/div[2]/div/div[2]/div[" +str(4+x) + "]/a)"
-            showMore_button = driver.find_element_by_xpath(xpath1)
-            showMore_button.click()
-            time.sleep(3)
-            print(x)
+            try:
+                driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+                time.sleep(3)
+                xpath1 = "(//*[@id='SummonerLayoutContent']/div[2]/div[2]/div/div[2]/div[" +str(4+x) + "]/a)"
+                showMore_button = driver.find_element_by_xpath(xpath1)
+                showMore_button.click()
+                time.sleep(3)
+                print(x)
+            except:
+                print("Can't find anymore data!")
+                break
         html = driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
         driver.quit()
         return html
