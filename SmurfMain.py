@@ -19,6 +19,17 @@ accountidlist=summonerstuff[1]
 googleFunction.postData(summonerdata)
 
 ###------ Run these to get Ranked Games in past X weeks-----###
-weeks = 2
-moredata = riotFunction.getMoreData(accountidlist,weeks)
-googleFunction.postMoreData(moredata)
+count = 0
+while count < 2 :
+    postinput = input('Post additional data? (careful not to exceed rate limits!) y/n:\n')
+    if postinput == 'y':
+        weeks = 3
+        moredata = riotFunction.getMoreData(accountidlist,weeks)
+        googleFunction.postMoreData(moredata)
+        count = 2
+    elif postinput == 'n':
+        print('Exiting..')
+        count = 2
+    elif postinput !=('y' or 'n'):
+        print('invalid input you dunce')
+        count = count+1

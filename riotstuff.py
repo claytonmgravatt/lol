@@ -5,7 +5,7 @@ import time
 
 
 class RiotFunction :
-    key = 'RGAPI-4b98470f-e5f4-46e0-a54b-e36f7449b853'
+    key = 'RGAPI-d4f6dd7d-8ba6-447a-954d-43a6773309ef'
     
     def getData (self, summoners) :
         summonerdata = {}
@@ -90,9 +90,9 @@ class RiotFunction :
                 data = json.loads(matchinfo.text)
                 print('the account id is '+str(account))
                 totalgames = data['totalGames']
-                print('ranked games played in last '+str(weeks)+' week(s): ' +str(totalgames)+'\n')
+                print('total games played in last '+str(weeks)+' week(s): ' +str(totalgames)+'\n')
                 gamesdata.append(totalgames)
             except:
-                print('no ranked games found!')
+                print('no games found!')
                 gamesdata.append(0)
         return gamesdata
