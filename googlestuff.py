@@ -15,7 +15,7 @@ class GoogleFunction :
         # Make sure you use the right name here.
         sheet = client.open("Smurf Check").sheet1
         # Extract and print all of the values
-        summoners = sheet.col_values(11)
+        summoners = sheet.col_values(12)
         summoners = summoners[1:]
         return summoners
     
@@ -40,4 +40,19 @@ class GoogleFunction :
 
         return df
         # return 1
-       
+     
+    def postMoreData(self, moredata):
+        # use creds to create a client to interact with the Google Drive API
+        scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+        creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+        client = gspread.authorize(creds)
+        
+        # Find a workbook by name and open the first sheet
+        # Make sure you use the right name here.
+        sheet = client.open("Smurf Check").get_worksheet(2)
+        df = pd.DataFrame(moredata,columns=['Ranked Games']) 
+        
+        sheet.update([df.columns.values.tolist()]+df.values.tolist())
+
+
+        return df

@@ -6,9 +6,19 @@ googleFunction = GoogleFunction()
 riotFunction = RiotFunction()
 
 # names =('Kreydawg','So Vayne')
+###----- Get Names fom Spreadsheet -----###
 names = googleFunction.getNames()
-summonerdata = riotFunction.getData(names)
 print(names)
-print(summonerdata)
-yikes = googleFunction.postData(summonerdata)
 
+###----- Get summoner information from Riot -----###
+summonerstuff = riotFunction.getData(names)
+
+summonerdata=summonerstuff[0]
+accountidlist=summonerstuff[1]
+
+googleFunction.postData(summonerdata)
+
+###------ Run these to get Ranked Games in past X weeks-----###
+weeks = 2
+moredata = riotFunction.getMoreData(accountidlist,weeks)
+googleFunction.postMoreData(moredata)
