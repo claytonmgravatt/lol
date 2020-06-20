@@ -5,7 +5,7 @@ import time
 
 
 class RiotFunction :
-    key = 'RGAPI-d4f6dd7d-8ba6-447a-954d-43a6773309ef'
+    key = 'RGAPI-ead0a122-8b87-455d-9f5d-d074168d2d9e'
     
     def getData (self, summoners) :
         summonerdata = {}
